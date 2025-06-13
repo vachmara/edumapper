@@ -6,11 +6,18 @@ export default defineAppConfig({
     },
     button: {
       slots: {
-        base: 'rounded-[1000px]'
+        base: 'rounded-[1000px] border'
       },
       defaultVariants: {
         color: 'neutral'
-      }
+      },
+      compoundVariants: [
+        {
+          color: 'neutral',
+          variant: 'solid',
+          class: 'text-inverted bg-inverted hover:bg-inverted/90 disabled:bg-beige aria-disabled:bg-beige disabled:text-black disabled:border-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inverted'
+        }
+      ]
     },
     radioGroup: {
       slots: {
