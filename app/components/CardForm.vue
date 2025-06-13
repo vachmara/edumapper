@@ -91,7 +91,10 @@ const onClick = () => {
           @click="onClick"
         />
       </div>
-      <Transition>
+      <Transition
+        name="form-expand"
+        mode="out-in"
+      >
         <div
           v-if="open && items?.length"
           class="flex flex-col gap-6"
@@ -124,3 +127,32 @@ const onClick = () => {
     </UForm>
   </UCard>
 </template>
+
+<style scoped>
+.form-expand-enter-active {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.form-expand-leave-active {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-expand-enter-from {
+  opacity: 0;
+  transform: translateY(-20px) scale(0.95);
+  max-height: 0;
+}
+
+.form-expand-leave-to {
+  opacity: 0;
+  transform: translateY(-10px) scale(0.98);
+  max-height: 0;
+}
+
+.form-expand-enter-to,
+.form-expand-leave-from {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  max-height: 500px;
+}
+</style>
