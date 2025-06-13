@@ -11,7 +11,7 @@ export type CardFormItem = {
    * Define the name of the item. This will be used in the form submission.
    */
   name: string
-  items: RadioGroupItem[]
+  items?: RadioGroupItem[]
 }
 
 export interface CardFormProps {

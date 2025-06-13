@@ -1,20 +1,18 @@
 <script lang="ts" setup>
 import type { RadioGroupItem } from '@nuxt/ui'
+import type { CardFormItem } from '~/components/CardForm.vue'
 
-const yearItems = ref<RadioGroupItem[]>(['Seconde', 'Première', 'Terminale'])
-const levelItems = ref<RadioGroupItem[]>(['Générale', 'Technologique', 'Professionnelle'])
-
-const cardFormItems = [
+const cardFormItems: CardFormItem[] = [
   {
     type: 'radio-group',
     name: 'class',
-    items: ['Seconde', 'Première', 'Terminale']
+    items: ['Seconde', 'Première', 'Terminale'] as RadioGroupItem[]
   },
   {
     type: 'radio-group',
     label: 'Type de bac',
     name: 'level',
-    items: ['Générale', 'Technologique', 'Professionnelle']
+    items: ['Générale', 'Technologique', 'Professionnelle'] as RadioGroupItem[]
   }
 ]
 </script>
