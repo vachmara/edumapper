@@ -1,5 +1,12 @@
+<script lang="ts" setup>
+import type { RadioGroupItem } from '@nuxt/ui'
+
+const yearItems = ref<RadioGroupItem[]>(['Seconde', 'Première', 'Terminale'])
+const levelItems = ref<RadioGroupItem[]>(['Générale', 'Technologique', 'Professionnelle'])
+</script>
+
 <template>
-  <UContainer class="mt-8">
+  <UContainer class="mt-8 flex flex-col gap-4">
     <UCard
       variant="soft"
       :ui="{
@@ -29,6 +36,48 @@
           />
         </div>
       </div>
+    </UCard>
+    <UCard
+      variant="soft"
+      :ui="{
+        root: 'bg-white rounded-[24px]'
+      }"
+    >
+      <UForm class="flex flex-col gap-6">
+        <div class="flex justify-between">
+          <h2 class="font-bold">
+            En quelle classe es-tu ?
+          </h2>
+          <UIcon
+            name="i-lucide-x"
+            class="cursor-pointer"
+          />
+        </div>
+        <URadioGroup
+          color="primary"
+          variant="card"
+          indicator="hidden"
+          :items="yearItems"
+          orientation="horizontal"
+        />
+        <USeparator />
+        <URadioGroup
+          legend="Type de bac"
+          color="primary"
+          variant="card"
+          indicator="hidden"
+          :items="levelItems"
+          orientation="horizontal"
+        />
+        <UButton
+          label="Confirmer"
+          size="xl"
+          :ui="{
+            base: 'flex items-center justify-center cursor-pointer'
+          }"
+          disabled
+        />
+      </UForm>
     </UCard>
   </UContainer>
 </template>
