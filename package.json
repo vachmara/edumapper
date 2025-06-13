@@ -31,6 +31,10 @@
       "@parcel/watcher",
       "esbuild",
       "vue-demi"
+    ],
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "unrs-resolver"
     ]
   },
   "packageManager": "pnpm@10.12.1"
