@@ -79,5 +79,7 @@ const levelItems = ref<RadioGroupItem[]>(['Générale', 'Technologique', 'Profes
         />
       </UForm>
     </UCard>
+    <CardForm title="Spécialités" />
+    <CardForm title="Notes" />
   </UContainer>
 </template>
