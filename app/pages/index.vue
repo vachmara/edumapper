@@ -1,6 +1,6 @@
 <template>
   <UContainer class="mt-8">
-    <UCard>
+    <UCard variant="subtle">
       Test
     </UCard>
   </UContainer>

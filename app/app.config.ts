@@ -4,5 +4,13 @@ export default defineAppConfig({
       primary: 'green',
       neutral: 'slate'
     }
+  },
+  uiPro: {
+    header: {
+      slots: {
+        root: 'bg-beige'
+      }
+    }
   }
+
 })

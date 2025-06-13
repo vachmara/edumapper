@@ -26,17 +26,19 @@ useSeoMeta({
 </script>
 
 <template>
-  <UApp>
-    <UHeader>
-      <template #left>
-        <NuxtLink to="/">
-          <LogoEdumapper class="w-auto h-6 shrink-0" />
-        </NuxtLink>
-      </template>
-    </UHeader>
+  <div class="bg-beige">
+    <UApp>
+      <UHeader>
+        <template #left>
+          <NuxtLink to="/">
+            <LogoEdumapper class="w-auto h-6 shrink-0" />
+          </NuxtLink>
+        </template>
+      </UHeader>
 
-    <UMain>
-      <NuxtPage />
-    </UMain>
-  </UApp>
+      <UMain>
+        <NuxtPage />
+      </UMain>
+    </UApp>
+  </div>
 </template>
