@@ -1,14 +1,64 @@
+<script lang="ts">
+import type { RadioGroupItem } from '@nuxt/ui'
+
+export type CardFormItem = {
+  /**
+   * Define the type of the item. Support only radio group for now.
+   */
+  type: 'radio-group'
+  label?: string
+  /**
+   * Define the name of the item. This will be used in the form submission.
+   */
+  name: string
+  items: RadioGroupItem[]
+}
+
+export interface CardFormProps {
+  title: string
+  /**
+   *
+   * Define the question to ask the use when the form is opened.
+   * @default 'Quelle est ta classe ?'
+   */
+  question?: string
+  /**
+   * Define the status of the form. Only visible when the form is closed.
+   * @default 'À compléter'
+   */
+  status?: string
+  /**
+   * Define if the form should be opened by default.
+   * @default false
+   */
+  defaultOpen?: boolean
+  /**
+   *  Define the items of the form. If not provided, the form will not open.
+   */
+  items?: CardFormItem[]
+}
+</script>
+
 <script lang="ts" setup>
-defineProps({
-  title: {
-    type: String,
-    required: true
-  },
-  status: {
-    type: String,
-    default: 'À compléter'
-  }
+const props = withDefaults(defineProps<CardFormProps>(), {
+  question: 'Quelle est ta classe ?',
+  status: 'À compléter',
+  defaultOpen: false
 })
+
+const open = defineModel<boolean>()
+
+const state = reactive({
+  ...props.items?.reduce((acc, item) => {
+    acc[item.name] = ''
+    return acc
+  }, {} as Record<string, string>)
+})
+
+const onClick = () => {
+  if (!props.items?.length) return
+  open.value = !open.value
+}
 </script>
 
 <template>
@@ -18,17 +68,59 @@ defineProps({
       root: 'bg-white rounded-[24px]'
     }"
   >
-    <div class="flex">
-      <div class="flex flex-col gap-1">
-        <h2 class="font-bold">
-          {{ title }}
-        </h2>
-        <span class="text-grey">À compléter</span>
+    <UForm
+      :state="state"
+      class="flex-col gap-6"
+    >
+      <div class="flex justify-between">
+        <div
+          class="flex flex-col gap-1"
+        >
+          <h2 class="font-bold">
+            {{ open ? question : title }}
+          </h2>
+          <span
+            v-if="!open"
+            class="text-grey"
+          >{{ status }}</span>
+        </div>
+        <UIcon
+          :name="open ? 'i-lucide-x':'i-lucide-pencil-line'"
+          class="cursor-pointer ml-auto"
+          :class="{ 'pointer-events-none': !items?.length }"
+          @click="onClick"
+        />
       </div>
-      <UIcon
-        name="i-lucide-pencil-line"
-        class="cursor-pointer ml-auto"
-      />
-    </div>
+      <Transition>
+        <div
+          v-if="open && items?.length"
+          class="flex flex-col gap-6"
+        >
+          <UFormField
+            v-for="cardItem in items.filter(i => i.type === 'radio-group')"
+            :key="cardItem.name"
+            :name="cardItem.name"
+            :label="cardItem.label"
+          >
+            <URadioGroup
+              color="primary"
+              variant="card"
+              indicator="hidden"
+              :items="cardItem.items"
+              orientation="horizontal"
+              :model-value="state[cardItem.name]"
+            />
+          </UFormField>
+          <UButton
+            label="Confirmer"
+            size="xl"
+            :ui="{
+              base: 'flex items-center justify-center cursor-pointer'
+            }"
+            disabled
+          />
+        </div>
+      </Transition>
+    </UForm>
   </UCard>
 </template>
