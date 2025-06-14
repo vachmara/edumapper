@@ -78,7 +78,7 @@ onMounted(() => {
   >
     <UForm
       :state="state"
-      class="flex-col gap-6"
+      class="flex flex-col gap-6"
     >
       <div class="flex justify-between">
         <div
