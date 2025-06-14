@@ -33,12 +33,18 @@ const cardFormItems: CardFormItem[] = [
           </h1>
           <div class="flex items-center gap-2">
             <div class="flex items-center gap-1">
-              <UIcon name="i-lucide-map-pin" />
-              <span>Lille</span>
+              <UIcon
+                name="i-lucide-map-pin"
+                :size="12"
+              />
+              <span class="text-sm">Lille</span>
             </div>
             <div class="flex items-center gap-1">
-              <UIcon name="i-lucide-building" />
-              <span>Lycée public</span>
+              <UIcon
+                name="i-lucide-building"
+                :size="12"
+              />
+              <span class="text-sm">Lycée public</span>
             </div>
           </div>
         </div>
