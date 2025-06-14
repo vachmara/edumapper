@@ -61,7 +61,7 @@ export default defineAppConfig({
   uiPro: {
     header: {
       slots: {
-        root: 'bg-beige'
+        root: 'bg-beige border-2 border-[#1B1B1B1A]'
       }
     }
   }
