@@ -19,6 +19,11 @@ export default defineAppConfig({
         }
       ]
     },
+    formField: {
+      slots: {
+        root: 'flex flex-col gap-4'
+      }
+    },
     radioGroup: {
       slots: {
         item: 'bg-beige',
