@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { RadioGroupItem } from '@nuxt/ui'
+import type { FormSubmitEvent, RadioGroupItem } from '@nuxt/ui'
 
 export type CardFormItem = {
   /**
@@ -23,11 +23,6 @@ export interface CardFormProps {
    */
   question?: string
   /**
-   * Define the status of the form. Only visible when the form is closed.
-   * @default 'À compléter'
-   */
-  status?: string
-  /**
    * Define if the form should be opened by default.
    * @default false
    */
@@ -42,11 +37,11 @@ export interface CardFormProps {
 <script lang="ts" setup>
 const props = withDefaults(defineProps<CardFormProps>(), {
   question: 'Quelle est ta classe ?',
-  status: 'À compléter',
   defaultOpen: false
 })
 
-const open = defineModel<boolean>()
+const open = ref(false)
+const modelValue = defineModel<string | undefined>()
 
 const rawState = toValue(props.items ?? [])?.reduce((acc, item) => {
   if (item.type === 'radio-group') {
@@ -64,6 +59,14 @@ const onClick = () => {
   open.value = !open.value
 }
 
+const onSubmit = (event: FormSubmitEvent<Record<string, undefined>>) => {
+  if (isButtonDisabled.value) return
+  modelValue.value = Object.values(event.data)?.join(' ') || undefined
+  open.value = false
+}
+
+const isButtonDisabled = computed(() => Object.values(state).some(value => value === undefined))
+
 onMounted(() => {
   open.value = props.defaultOpen
 })
@@ -79,18 +82,32 @@ onMounted(() => {
     <UForm
       :state="state"
       class="flex flex-col gap-6"
+      @submit="onSubmit"
     >
       <div class="flex justify-between">
         <div
           class="flex flex-col gap-1"
         >
-          <h2 class="font-bold">
+          <h2
+            class="font-bold"
+            :class="{ 'text-grey text-sm font-normal': modelValue }"
+          >
             {{ open ? question : title }}
           </h2>
-          <span
-            v-if="!open"
-            class="text-grey"
-          >{{ status }}</span>
+          <div v-if="!open">
+            <span
+              v-if="!modelValue"
+              class="text-grey"
+            >
+              À compléter
+            </span>
+            <span
+              v-else
+              class="text-[16px] font-semibold"
+            >
+              {{ modelValue }}
+            </span>
+          </div>
         </div>
         <UIcon
           :name="open ? 'i-lucide-x':'i-lucide-pencil-line'"
@@ -114,21 +131,22 @@ onMounted(() => {
             :label="cardItem.label"
           >
             <URadioGroup
+              v-model="state[cardItem.name]"
               color="primary"
               variant="card"
               indicator="hidden"
               :items="cardItem.items"
               orientation="horizontal"
-              :model-value="state[cardItem.name]"
             />
           </UFormField>
           <UButton
             label="Confirmer"
+            type="submit"
             size="xl"
             :ui="{
               base: 'flex items-center justify-center cursor-pointer'
             }"
-            disabled
+            :disabled="isButtonDisabled"
           />
         </div>
       </Transition>
@@ -162,5 +180,20 @@ onMounted(() => {
   opacity: 1;
   transform: translateY(0) scale(1);
   max-height: 500px;
+}
+
+.fade-enter-active {
+  transition: opacity 0.3s ease-in-out;
+}
+.fade-leave-active {
+  transition: opacity 0.3s ease-in-out;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
 }
 </style>
