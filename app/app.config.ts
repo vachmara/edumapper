@@ -23,7 +23,7 @@ export default defineAppConfig({
       slots: {
         item: 'bg-beige',
         label: 'text-base',
-        fieldset: 'gap-2 grid grid-cols-2 md:flex md:flex-col'
+        fieldset: 'gap-2 grid grid-cols-2 md:flex'
       },
       variants: {
         variant: {
