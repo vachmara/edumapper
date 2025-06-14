@@ -45,7 +45,8 @@ const cardFormItems: CardFormItem[] = [
         <div class="flex flex-col gap-2 md:ml-auto">
           <UButton
             label="Modifier"
-            class="px-3 py-2 cursor-pointer w-fit border-none"
+            class="px-3 py-2 cursor-pointer w-fit border-none text-black"
+            style="--ui-bg-inverted: #fff;"
           />
         </div>
       </div>
