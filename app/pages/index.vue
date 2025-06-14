@@ -54,6 +54,7 @@ const cardFormItems: CardFormItem[] = [
       title="Classe"
       question="En quelle classe es-tu ?"
       :items="cardFormItems"
+      default-open
     />
     <CardForm title="Spécialités" />
     <CardForm title="Notes" />

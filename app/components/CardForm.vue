@@ -48,17 +48,25 @@ const props = withDefaults(defineProps<CardFormProps>(), {
 
 const open = defineModel<boolean>()
 
+const rawState = toValue(props.items ?? [])?.reduce((acc, item) => {
+  if (item.type === 'radio-group') {
+    acc[item.name] = undefined
+  }
+  return acc
+}, {} as Record<string, undefined>)
+
 const state = reactive({
-  ...props.items?.reduce((acc, item) => {
-    acc[item.name] = ''
-    return acc
-  }, {} as Record<string, string>)
+  ...rawState
 })
 
 const onClick = () => {
   if (!props.items?.length) return
   open.value = !open.value
 }
+
+onMounted(() => {
+  open.value = props.defaultOpen
+})
 </script>
 
 <template>
