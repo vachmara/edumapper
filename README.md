@@ -1,49 +1,38 @@
-# Nuxt Starter Template
+## ℹ️ Technical test
 
-[![Nuxt UI Pro](https://img.shields.io/badge/Made%20with-Nuxt%20UI%20Pro-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com/pro)
-[![Deploy to NuxtHub](https://img.shields.io/badge/Deploy%20to-NuxtHub-00DC82?logo=nuxt&labelColor=020420)](https://hub.nuxt.com/new?repo=nuxt-ui-pro/starter)
+### How to Launch and Use the Project
 
-This Nuxt starter lets you get started with [Nuxt UI Pro](https://ui.nuxt.com/pro) quickly.
+1. **Install dependencies:**
+   ```bash
+   pnpm i
+   ```
+2. **Start the development server:**
+   ```bash
+   pnpm dev
+   ```
+   The app will be available at [http://localhost:3000](http://localhost:3000).
 
-- [Live demo](https://ui-pro-starter.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/getting-started/installation/pro/nuxt)
+### Project Structure
+- Main page: `app/pages/index.vue`
+- UI components: `app/components/`
+- Global styles: `app/assets/css/main.css`
+- Design system config: `app/app.config.ts`
 
-<a href="https://ui-pro-starter.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://assets.hub.nuxt.com/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJodHRwczovL3VpLXByby1zdGFydGVyLm51eHQuZGV2IiwiaWF0IjoxNzM5NDYzMzk4fQ.XLzPkSW6nRbPW07QO1RkMwz_RAPA4KfeyrWrK3li9YI.jpg?theme=dark">
-    <source media="(prefers-color-scheme: light)" srcset="https://assets.hub.nuxt.com/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJodHRwczovL3VpLXByby1zdGFydGVyLm51eHQuZGV2IiwiaWF0IjoxNzM5NDYzMzk4fQ.XLzPkSW6nRbPW07QO1RkMwz_RAPA4KfeyrWrK3li9YI.jpg?theme=light">
-    <img alt="Nuxt Starter Template" src="https://assets.hub.nuxt.com/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJodHRwczovL3VpLXByby1zdGFydGVyLm51eHQuZGV2IiwiaWF0IjoxNzM5NDYzMzk4fQ.XLzPkSW6nRbPW07QO1RkMwz_RAPA4KfeyrWrK3li9YI.jpg">
-  </picture>
-</a>
+### Design System
+- The file [`app/app.config.ts`](https://ui.nuxt.com/getting-started/theme#configuration) allows you to tweak the design system and Nuxt UI component defaults CSS classes.
+- [Nuxt Icons](https://ui.nuxt.com/getting-started/icons/nuxt) are used for icons (lucide in our case)
+- [Nuxt Fonts](https://ui.nuxt.com/getting-started/fonts) is used for font management (DM Sans in our case)
+- Nuxt 4 Compatibility mode is enabled in `nuxt.config.ts` for a smoother transition to Nuxt 4.
+- ESLint is configured
 
-## Setup
+### Nuxt UI & Tailwind
+- Uses [Nuxt UI](https://ui.nuxt.com/) for rapid, consistent UI development.
+- Tailwind CSS v4 is used for utility-first styling.
+- All components use are Type-safe and use the Composition API.
 
-Make sure to install the dependencies:
+### Commit Conventions
+- Commits follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for clarity and traceability.
 
-```bash
-pnpm install
-```
+### No API Integration
+- The app is fully static and does not require any backend or API.
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-pnpm dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-pnpm build
-```
-
-Locally preview production build:
-
-```bash
-pnpm preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
