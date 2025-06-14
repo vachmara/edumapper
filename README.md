@@ -1,4 +1,4 @@
-## ℹ️ Technical test
+## ℹ️ Frontend technical test for [Edumapper](https://www.edumapper.com/)
 
 ### How to Launch and Use the Project
 
