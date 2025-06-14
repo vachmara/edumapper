@@ -129,6 +129,9 @@ onMounted(() => {
             :key="cardItem.name"
             :name="cardItem.name"
             :label="cardItem.label"
+            :ui="{
+              root: cardItem.label ? 'flex flex-col gap-4' : ''
+            }"
           >
             <div class="flex flex-col gap-6">
               <URadioGroup

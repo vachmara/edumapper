@@ -19,20 +19,21 @@ export default defineAppConfig({
         }
       ]
     },
-    formField: {
-      slots: {
-        root: 'flex flex-col gap-4'
-      }
-    },
     radioGroup: {
       slots: {
         item: 'bg-beige',
-        label: 'text-base'
+        label: 'text-base',
+        fieldset: 'gap-2 grid grid-cols-2 md:flex md:flex-col'
       },
       variants: {
         variant: {
           card: {
             item: 'border-beige rounded-[24px] cursor-pointer'
+          }
+        },
+        size: {
+          md: {
+            fieldset: 'gap-y-2 md:gap-y-1'
           }
         }
       },
