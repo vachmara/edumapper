@@ -31,7 +31,7 @@ useSeoMeta({
       <UHeader>
         <template #left>
           <NuxtLink to="/">
-            <LogoEdumapper class="w-auto h-6 shrink-0" />
+            <LogoEdumapper class="w-auto h-[28px] shrink-0" />
           </NuxtLink>
         </template>
       </UHeader>
