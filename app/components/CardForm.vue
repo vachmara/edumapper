@@ -130,14 +130,17 @@ onMounted(() => {
             :name="cardItem.name"
             :label="cardItem.label"
           >
-            <URadioGroup
-              v-model="state[cardItem.name]"
-              color="primary"
-              variant="card"
-              indicator="hidden"
-              :items="cardItem.items"
-              orientation="horizontal"
-            />
+            <div class="flex flex-col gap-6">
+              <URadioGroup
+                v-model="state[cardItem.name]"
+                color="primary"
+                variant="card"
+                indicator="hidden"
+                :items="cardItem.items"
+                orientation="horizontal"
+              />
+              <USeparator v-if="cardItem !== items[items.length - 1]" />
+            </div>
           </UFormField>
           <UButton
             label="Confirmer"
