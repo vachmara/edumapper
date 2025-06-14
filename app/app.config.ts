@@ -15,7 +15,7 @@ export default defineAppConfig({
         {
           color: 'neutral',
           variant: 'solid',
-          class: 'text-inverted bg-inverted hover:bg-inverted/90 disabled:bg-beige aria-disabled:bg-beige disabled:text-black disabled:border-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inverted'
+          class: 'text-inverted bg-inverted hover:bg-inverted/90 disabled:opacity-50 disabled:bg-beige aria-disabled:bg-beige disabled:text-black disabled:border-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inverted'
         }
       ]
     },
